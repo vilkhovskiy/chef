@@ -1,6 +1,6 @@
 #
 # Author:: Steven Danna (<steve@chef.io>)
-# Copyright:: Copyright 2011-2016 Chef Software, Inc.
+# Copyright:: Copyright (c) Chef Software Inc.
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +24,7 @@ Chef::Knife::UserShow.load_deps
 describe Chef::Knife::UserShow do
   let(:knife) { Chef::Knife::UserShow.new }
   let(:user_mock) { double("user_mock") }
+
   let(:rest) { double("Chef::ServerAPI") }
 
   before :each do
