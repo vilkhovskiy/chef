@@ -98,7 +98,9 @@ class Chef
       property :headers, Hash, default: lazy { {} },
         description: "A Hash of custom HTTP headers."
 
-      property :show_progress, [ TrueClass, FalseClass ], default: false
+      property :show_progress, [ TrueClass, FalseClass ],
+        default: false,
+        description: "Displays the progress of the file download."
 
       property :ssl_verify_mode, Symbol, equal_to: %i{verify_none verify_peer},
         introduced: "16.2",

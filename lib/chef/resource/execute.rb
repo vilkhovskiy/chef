@@ -549,7 +549,7 @@ class Chef
         desired_state: false
 
       property :user, [ String, Integer ],
-        description: "The user name of the user identity with which to launch the new process. The user name may optionally be specified with a domain, i.e. `domainuser` or `user@my.dns.domain.com` via Universal Principal Name (UPN)format. It can also be specified without a domain simply as user if the domain is instead specified using the domain property. On Windows only, if this property is specified, the password property must be specified."
+        description: "The user name of the user identity with which to launch the new process. The user name may optionally be specified with a domain, i.e. `domain\\user` or `user@my.dns.domain.com` via Universal Principal Name (UPN)format. It can also be specified without a domain simply as user if the domain is instead specified using the domain property. On Windows only, if this property is specified, the password property must be specified."
 
       property :domain, String,
         introduced: "12.21",
@@ -562,7 +562,7 @@ class Chef
       # lazy used to set default value of sensitive to true if password is set
       property :sensitive, [ TrueClass, FalseClass ],
         description: "Ensure that sensitive resource data is not logged by the #{ChefUtils::Dist::Infra::PRODUCT}.",
-        default: lazy { password ? true : false }, default_description: "True if the password property is set. False otherwise."
+        default: lazy { password ? true : false }, default_description: "True if the `password` property is set. False otherwise."
 
       property :elevated, [ TrueClass, FalseClass ], default: false,
         description: "Determines whether the script will run with elevated permissions to circumvent User Access Control (UAC) from interactively blocking the process.\nThis will cause the process to be run under a batch login instead of an interactive login. The user running #{ChefUtils::Dist::Infra::CLIENT} needs the 'Replace a process level token' and 'Adjust Memory Quotas for a process' permissions. The user that is running the command needs the 'Log on as a batch job' permission.\nBecause this requires a login, the user and password properties are required.",
