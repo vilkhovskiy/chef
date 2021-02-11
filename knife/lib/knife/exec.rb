@@ -25,7 +25,6 @@ class Chef::Knife::Exec < Chef::Knife
 
   deps do
     require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
-    require_relative "../util/path_helper"
   end
 
   option :exec,
@@ -40,7 +39,7 @@ class Chef::Knife::Exec < Chef::Knife
     proc: lambda { |o| o.split(":") }
 
   deps do
-    require_relative "../shell/ext"
+    require_relative "chef/shell/ext" unless defined?(Chef::Shell::Extensions) # MPTD: naming convention mismatch Ext Extensions
   end
 
   def run

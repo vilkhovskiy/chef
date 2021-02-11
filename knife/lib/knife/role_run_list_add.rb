@@ -24,8 +24,8 @@ class Chef
     class RoleRunListAdd < Knife
 
       deps do
-        require_relative "chef/role" unless defined?(Chef::Role)
-        require_relative "chef/json_compat" unless defined?(Chef::JSONCompat)
+        relative "chef/role" unless defined?(Chef::Role)
+        relative "chef/json_compat" unless defined?(Chef::JSONCompat)
       end
 
       banner "knife role run_list add [ROLE] [ENTRY [ENTRY]] (options)"

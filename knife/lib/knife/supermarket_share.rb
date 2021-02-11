@@ -27,8 +27,8 @@ class Chef
       deps do
         require "chef/cookbook_loader" unless defined?(Chef::CookbookLoader)
         require "chef/cookbook_uploader" unless defined?(Chef::CookbookUploader)
-        require_relative "../cookbook_site_streaming_uploader"
-        require_relative "../mixin/shell_out"
+        require "chef/cookbook_site_streaming_uploader" unless defined?(Chef::CookbookSiteStreamingUploader)
+        require "chef/mixin/shell_out" unless defined?(Chef::Mixin::ShellOut)
       end
 
       banner "knife supermarket share COOKBOOK [CATEGORY] (options)"

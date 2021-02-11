@@ -18,7 +18,7 @@
 
 autoload :FFI_Yajl, "ffi_yajl"
 require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
-require_relative "chef/data_bag_item" unless defined?(Chef::DataBagItem)
+require "chef/data_bag_item" unless defined?(Chef::DataBagItem)
 
 class Chef
   class Knife

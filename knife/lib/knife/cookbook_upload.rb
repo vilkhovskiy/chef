@@ -24,7 +24,7 @@ class Chef
   class Knife
     class CookbookUpload < Knife
       deps do
-        require_relative "../mixin/file_class"
+        require "chef/mixin/file_class" unless defined?(Chef::Mixin::FileClass)
         include Chef::Mixin::FileClass
         require "chef/exceptions" unless defined?(Chef::Exceptions)
         require "chef/cookbook_loader" unless defined?(Chef::CookbookLoader)

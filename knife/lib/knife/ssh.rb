@@ -23,12 +23,12 @@ class Chef
     class Ssh < Knife
 
       deps do
-        require_relative "../mixin/shell_out" unless defined?(Chef::Mixin::Shellout)
+        require "chef/mixin/shell_out" unless defined?(Chef::Mixin::ShellOut)
         require "net/ssh" unless defined?(Net::SSH)
         require "net/ssh/multi"
         require "readline"
-        require_relative "chef/exceptions" unless defined?(Chef::Exceptions)
-        require_relative "chef/search/query" unless defined?(Chef::Search::Query)
+        require "chef/exceptions" unless defined?(Chef::Exceptions)
+        require "chef/search/query" unless defined?(Chef::Search::Query)
         require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
 
         include Chef::Mixin::ShellOut

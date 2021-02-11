@@ -18,7 +18,7 @@
 
 require "mixlib/cli" unless defined?(Mixlib::CLI)
 require "chef/config" unless defined?(Chef::Config)
-require_relative "../encrypted_data_bag_item/check_encrypted"
+require "encrypted_data_bag_item/check_encrypted" unless defined?(Chef::EncryptedDataBagItem::CheckEncrypted)
 
 class Chef
   class Knife

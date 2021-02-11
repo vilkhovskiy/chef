@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-require_relative "../key"
+require "chef/key" unless defined?(Chef::Key)
 require "chef/json_compat" unless defined?(Chef::JSONCompat)
 require "chef/exceptions" unless defined?(Chef::Exceptions)
 
