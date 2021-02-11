@@ -18,7 +18,7 @@
 
 require_relative "../../version"
 require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
-require "chef/run_list" unless defined?(Chef::RunList) require_relative "../run_list"
+require "chef/run_list" unless defined?(Chef::RunList)
 require_relative "gem_glob_loader"
 require_relative "hashed_command_loader"
 
