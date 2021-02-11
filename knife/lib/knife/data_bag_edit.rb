@@ -26,7 +26,7 @@ class Chef
       include DataBagSecretOptions
 
       deps do
-        require_relative "../data_bag_item"
+        require "chef/data_bag_item" unless defined?(Chef::DataBagItem)
         require "chef/encrypted_data_bag_item" unless defined?(Chef::EncryptedDataBagItem)
       end
 
