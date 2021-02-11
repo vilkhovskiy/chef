@@ -28,7 +28,7 @@ class Chef
         include Chef::Mixin::FileClass
         require "chef/exceptions" unless defined?(Chef::Exceptions)
         require "chef/cookbook_loader" unless defined?(Chef::CookbookLoader)
-        require_relative "../cookbook_uploader"
+        require "chef/cookbook_uploader" unless defined?(Chef::CookbookUploader)
       end
 
       banner "knife cookbook upload [COOKBOOKS...] (options)"
