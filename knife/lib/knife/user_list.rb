@@ -25,7 +25,7 @@ class Chef
       deps do
         # MPTD: Similar to api_client_v1, this lives in Chef but
         # is not used there, only in knife.
-        #require_relative "../user_v1"
+        #require "chef/user_v1" unless defined?(Chef::UserV1)
         require "chef/user_v1" unless defined?(Chef::UserV1)
       end
 

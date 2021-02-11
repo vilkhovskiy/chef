@@ -23,7 +23,7 @@ class Chef
     class UserDelete < Knife
 
       deps do
-        require_relative "../user_v1"
+        require "chef/user_v1" unless defined?(Chef::UserV1)
       end
 
       banner "knife user delete USER (options)"

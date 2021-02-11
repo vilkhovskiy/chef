@@ -25,7 +25,7 @@ class Chef
       include Knife::Core::MultiAttributeReturnOption
 
       deps do
-        require_relative "../user_v1"
+        require "chef/user_v1" unless defined?(Chef::UserV1)
       end
 
       banner "knife user show USER (options)"
