@@ -39,7 +39,7 @@ class Chef::Knife::Exec < Chef::Knife
     proc: lambda { |o| o.split(":") }
 
   deps do
-    require_relative "chef/shell/ext" unless defined?(Chef::Shell::Extensions) # MPTD: naming convention mismatch Ext Extensions
+    require "chef/shell/ext" unless defined?(Chef::Shell::Extensions) # MPTD: naming convention mismatch Ext Extensions
   end
 
   def run

@@ -27,9 +27,9 @@ class Chef
 
       deps do
         require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
-        relative "chef/data_bag" unless defined?(Chef::DataBag)
-        relative "chef/data_bag_item" unless defined?(Chef::DataBagItem)
-        relative "chef/encrypted_data_bag_item" unless defined?(Chef::EncryptedDataBagItem)
+        require "chef/data_bag" unless defined?(Chef::DataBag)
+        require "chef/data_bag_item" unless defined?(Chef::DataBagItem)
+        require "chef/encrypted_data_bag_item" unless defined?(Chef::EncryptedDataBagItem)
         require_relative "core/object_loader"
       end
 
