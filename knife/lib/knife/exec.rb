@@ -24,6 +24,7 @@ class Chef::Knife::Exec < Chef::Knife
   banner "knife exec [SCRIPT] (options)"
 
   deps do
+    require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
     require_relative "../util/path_helper"
   end
 
@@ -47,7 +48,7 @@ class Chef::Knife::Exec < Chef::Knife
 
     # Default script paths are chef-repo/.chef/scripts and ~/.chef/scripts
     config[:script_path] << File.join(Chef::Knife.chef_config_dir, "scripts") if Chef::Knife.chef_config_dir
-    Chef::Util::PathHelper.home(".chef", "scripts") { |p| config[:script_path] << p }
+    ChefConfig::PathHelper.home(".chef", "scripts") { |p| config[:script_path] << p }
 
     scripts = Array(name_args)
     context = Object.new
