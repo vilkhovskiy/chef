@@ -24,7 +24,7 @@ class Chef
     class SslCheck < Chef::Knife
 
       deps do
-        require_relative "../config"
+        require "chef/config" unless defined?(Chef::Config)
         # MPTD: - we aren't using pp
         require "pp" unless defined?(PP)
         require "socket" unless defined?(Socket)

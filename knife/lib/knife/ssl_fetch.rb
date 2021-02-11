@@ -23,7 +23,7 @@ class Chef
     class SslFetch < Chef::Knife
 
       deps do
-        require_relative "../config"
+        require "chef/config" unless defined?(Chef::Config)
         require "pp" unless defined?(PP)
         require "socket" unless defined?(Socket)
         require "uri" unless defined?(URI)
