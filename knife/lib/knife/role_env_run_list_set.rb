@@ -24,7 +24,7 @@ class Chef
     class RoleEnvRunListSet < Knife
 
       deps do
-        require_relative "../role"
+        require "chef/role" unless defined?(Chef::Role)
         require_relative "../json_compat"
       end
 
