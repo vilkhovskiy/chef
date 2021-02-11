@@ -23,7 +23,7 @@ class Chef
     class NodeDelete < Knife
 
       deps do
-        require_relative "../node"
+        require "chef/node" unless defined?(Chef::Node)
         require "chef/json_compat" unless defined?(Chef::JSONCompat)
       end
 

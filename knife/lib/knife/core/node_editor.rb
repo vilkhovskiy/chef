@@ -18,7 +18,7 @@
 #
 
 require "chef/json_compat" unless defined?(Chef::JSONCompat)
-require_relative "../../node"
+require "chef/node" unless defined?(Chef::Node)
 
 class Chef
   class Knife

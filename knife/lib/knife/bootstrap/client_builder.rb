@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-require_relative "../../node"
+require "chef/node" unless defined?(Chef::Node)
 require_relative "../../server_api"
 require_relative "../../api_client/registration"
 require_relative "../../api_client"
