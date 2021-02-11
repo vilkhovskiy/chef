@@ -17,7 +17,7 @@
 #
 
 require "chef/node" unless defined?(Chef::Node)
-require_relative "../../server_api"
+require "chef/server_api" unless defined?(Chef::ServerAPI)
 require_relative "../../api_client/registration"
 require_relative "../../api_client"
 require "tmpdir" unless defined?(Dir.mktmpdir)

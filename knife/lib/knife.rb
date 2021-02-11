@@ -643,14 +643,13 @@ class Chef
 
     def rest
       @rest ||= begin
-        require_relative "server_api"
         Chef::ServerAPI.new(Chef::Config[:chef_server_url])
       end
     end
 
     def noauth_rest
       @rest ||= begin
-        require_relative "http/simple_json"
+        require "chef/http/simple_json" unless defined?(Chef::HTTP::SimpleJSON)
         Chef::HTTP::SimpleJSON.new(Chef::Config[:chef_server_url])
       end
     end
