@@ -27,7 +27,7 @@ class Chef
         require_relative "../mixin/file_class"
         include Chef::Mixin::FileClass
         require "chef/exceptions" unless defined?(Chef::Exceptions)
-        require_relative "../cookbook_loader"
+        require "chef/cookbook_loader" unless defined?(Chef::CookbookLoader)
         require_relative "../cookbook_uploader"
       end
 

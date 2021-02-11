@@ -23,7 +23,7 @@ class Chef
     class CookbookMetadata < Knife
 
       deps do
-        require_relative "../cookbook_loader"
+        require "chef/cookbook_loader" unless defined?(Chef::CookbookLoader)
         require_relative "../cookbook/metadata"
       end
 

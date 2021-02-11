@@ -25,7 +25,7 @@ class Chef
       include Chef::Mixin::ShellOut
 
       deps do
-        require_relative "../cookbook_loader"
+        require "chef/cookbook_loader" unless defined?(Chef::CookbookLoader)
         require_relative "../cookbook_uploader"
         require_relative "../cookbook_site_streaming_uploader"
         require_relative "../mixin/shell_out"
