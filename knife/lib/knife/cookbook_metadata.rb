@@ -24,7 +24,7 @@ class Chef
 
       deps do
         require "chef/cookbook_loader" unless defined?(Chef::CookbookLoader)
-        require_relative "../cookbook/metadata"
+        require "chef/cookbook/metadata" unless defined?(Chef::Cookbook::Metadata)
       end
 
       banner "knife cookbook metadata COOKBOOK (options)"
