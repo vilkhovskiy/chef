@@ -27,7 +27,7 @@ class Chef
 
       deps do
         require_relative "../data_bag_item"
-        require_relative "../encrypted_data_bag_item"
+        require "chef/encrypted_data_bag_item" unless defined?(Chef::EncryptedDataBagItem)
       end
 
       banner "knife data bag edit BAG ITEM (options)"
