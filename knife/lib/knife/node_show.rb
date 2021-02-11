@@ -30,7 +30,7 @@ class Chef
 
       deps do
         require_relative "../node"
-        require_relative "../json_compat"
+        require "chef/json_compat" unless defined?(Chef::JSONCompat)
       end
 
       banner "knife node show NODE (options)"

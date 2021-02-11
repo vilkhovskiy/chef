@@ -24,7 +24,7 @@ class Chef
 
       deps do
         require "chef/role" unless defined?(Chef::Role)
-        require_relative "../json_compat"
+        require "chef/json_compat" unless defined?(Chef::JSONCompat)
       end
 
       banner "knife role env_run_list remove [ROLE] [ENVIRONMENT] [ENTRIES] (options)"

@@ -22,7 +22,7 @@ class Chef
       banner "knife raw REQUEST_PATH (options)"
 
       deps do
-        require_relative "../json_compat"
+        require "chef/json_compat" unless defined?(Chef::JSONCompat)
         require_relative "../config"
         require_relative "../http"
         require_relative "../http/authenticator"
