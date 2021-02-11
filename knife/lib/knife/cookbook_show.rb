@@ -25,7 +25,7 @@ class Chef
       deps do
         require "chef/json_compat" unless defined?(Chef::JSONCompat)
         require "uri" unless defined?(URI)
-        require_relative "../cookbook_version"
+        require "chef/cookbook_version" unless defined?(Chef::CookbookVersion)
       end
 
       banner "knife cookbook show COOKBOOK [VERSION] [PART] [FILENAME] (options)"
