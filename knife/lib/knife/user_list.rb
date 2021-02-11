@@ -23,7 +23,10 @@ class Chef
     class UserList < Knife
 
       deps do
-        require_relative "../user_v1"
+        # MPTD: Similar to api_client_v1, this lives in Chef but
+        # is not used there, only in knife.
+        #require_relative "../user_v1"
+        require "chef/user_v1" unless defined?(Chef::UserV1)
       end
 
       banner "knife user list (options)"

@@ -23,7 +23,11 @@ class Chef
     class ClientEdit < Knife
 
       deps do
-        require_relative "../api_client_v1"
+        # MPTD: This is weird /b api_client_v1 lives in chef, but it's only used in knife;
+        # however chef also has 'api_client', which it does use. Still might make sense to move here,
+        # but will see how things settle out.
+        #require_relative "../api_client_v1"
+        require "chef/api_client_v1" unless defined?(Chef::ApiClientV1)
       end
 
       banner "knife client edit CLIENT (options)"

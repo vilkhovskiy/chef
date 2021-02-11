@@ -416,10 +416,9 @@ class Chef
 
       deps do
         require "erubis" unless defined?(Erubis)
-
         require "net/ssh" unless defined?(Net::SSH)
-        require_relative "../json_compat"
-        require_relative "../util/path_helper"
+        require "chef/json_compat" unless defined?(Chef::JSONCompat)
+        require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper) # MPTD check other path_helper, I think I did one wrong
         require_relative "bootstrap/chef_vault_handler"
         require_relative "bootstrap/client_builder"
         require_relative "bootstrap/train_connector"

@@ -26,9 +26,11 @@ class Chef
       attr_reader :chef_repo, :new_client_key, :validation_client_name, :validation_key
 
       deps do
-        require_relative "../util/path_helper"
+        require "chef-util/path_helper" unless defined?(ChefUtil::PathHelper)
         require_relative "client_create"
         require_relative "user_create"
+        #TODO - necessary? The only ohai reference in all of knife, and gets used
+        # to try to guess server name for the current host.  lighter options?
         require "ohai" unless defined?(Ohai::System)
         Chef::Knife::ClientCreate.load_deps
         Chef::Knife::UserCreate.load_deps
