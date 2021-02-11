@@ -18,7 +18,7 @@
 
 require_relative "../key"
 require "chef/json_compat" unless defined?(Chef::JSONCompat)
-require_relative "../exceptions"
+require "chef/exceptions" unless defined?(Chef::Exceptions)
 
 class Chef
   class Knife

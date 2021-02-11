@@ -23,7 +23,7 @@ class Chef
     class SupermarketInstall < Knife
 
       deps do
-        require_relative "../exceptions"
+        require "chef/exceptions" unless defined?(Chef::Exceptions)
         require "shellwords" unless defined?(Shellwords)
         require "mixlib/archive" unless defined?(Mixlib::Archive)
         require_relative "core/cookbook_scm_repo"
