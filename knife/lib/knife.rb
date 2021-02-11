@@ -22,16 +22,20 @@ require_relative "version"
 require "mixlib/cli" unless defined?(Mixlib::CLI)
 require "chef-utils/dsl/default_paths" unless defined?(ChefUtils::DSL::DefaultPaths)
 require "chef-utils/dist" unless defined?(ChefUtils::Dist)
-require_relative "workstation_config_loader"
-require_relative "mixin/convert_to_class_name"
-require_relative "mixin/default_paths"
+require "chef/workstation_config_loader" unless defined?(Chef::WorkstationConfigLoader)
+require "chef/mixin/convert_to_class_name" unless defined?(Chef::ConvertToClassName)
+require "chef/mixin/default_paths" unless defined?(Chef::Mixin::DefaultPaths)
 require_relative "knife/core/subcommand_loader"
 require_relative "knife/core/ui"
-require_relative "local_mode"
-require_relative "server_api"
-require_relative "http/authenticator"
-require_relative "http/http_request"
-require_relative "http"
+require "chef/local_mode" unless defined?(Chef::LocalMode)
+require "chef/server_api" unless defined?(Chef::ServerAPI)
+# MPTD: This order seems word
+require "http/authenticator" unless defined?(Chef::HTTP::Authenticator)
+require "http/http_request" unless defined?(Chef::HTTP::HTTPRequest)
+require "http" unless defined?(Chef::HTTP)
+# End
+
+# MPTD: using pp at all?  a quick perusal of knife doesn't turn any up, so far.
 require "pp" unless defined?(PP)
 
 class Chef

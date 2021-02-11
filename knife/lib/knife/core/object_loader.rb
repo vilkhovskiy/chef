@@ -17,8 +17,8 @@
 #
 
 autoload :FFI_Yajl, "ffi_yajl"
-require_relative "../../util/path_helper"
-require_relative "../../data_bag_item"
+require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
+require_relative "chef/data_bag_item" unless defined?(Chef::DataBagItem)
 
 class Chef
   class Knife
@@ -71,14 +71,14 @@ class Chef
         #
         # @api public
         def find_all_objects(path)
-          path = File.join(Chef::Util::PathHelper.escape_glob_dir(File.expand_path(path)), "*")
+          path = File.join(ChefConfig::PathHelper.escape_glob_dir(File.expand_path(path)), "*")
           path << ".{json,rb}"
           objects = Dir.glob(path)
           objects.map { |o| File.basename(o) }
         end
 
         def find_all_object_dirs(path)
-          path = File.join(Chef::Util::PathHelper.escape_glob_dir(File.expand_path(path)), "*")
+          path = File.join(ChefConfig::PathHelper.escape_glob_dir(File.expand_path(path)), "*")
           objects = Dir.glob(path)
           objects.delete_if { |o| !File.directory?(o) }
           objects.map { |o| File.basename(o) }

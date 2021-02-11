@@ -17,7 +17,8 @@
 #
 
 require_relative "../../version"
-require_relative "../../util/path_helper"
+require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
+require "chef/run_list" unless defined?(Chef::RunList) require_relative "../run_list"
 require_relative "gem_glob_loader"
 require_relative "hashed_command_loader"
 
@@ -72,7 +73,7 @@ class Chef
       end
 
       def self.plugin_manifest_path
-        Chef::Util::PathHelper.home(".chef", "plugin_manifest.json")
+        ChefConfig::PathHelper.home(".chef", "plugin_manifest.json")
       end
 
       def self.generate_hash
@@ -144,7 +145,7 @@ class Chef
       #
       def find_subcommands_via_dirglob
         # The "require paths" of the core knife subcommands bundled with chef
-        files = Dir[File.join(Chef::Util::PathHelper.escape_glob_dir(File.expand_path("../../knife", __dir__)), "*.rb")]
+        files = Dir[File.join(ChefConfig::PathHelper.escape_glob_dir(File.expand_path("../../knife", __dir__)), "*.rb")]
         subcommand_files = {}
         files.each do |knife_file|
           rel_path = knife_file[/#{CHEF_ROOT}#{Regexp.escape(File::SEPARATOR)}(.*)\.rb/, 1]
@@ -188,12 +189,12 @@ class Chef
         user_specific_files = []
 
         if chef_config_dir
-          user_specific_files.concat Dir.glob(File.expand_path("plugins/knife/*.rb", Chef::Util::PathHelper.escape_glob_dir(chef_config_dir)))
+          user_specific_files.concat Dir.glob(File.expand_path("plugins/knife/*.rb", ChefConfig::PathHelper.escape_glob_dir(chef_config_dir)))
         end
 
         # finally search ~/.chef/plugins/knife/*.rb
-        Chef::Util::PathHelper.home(".chef", "plugins", "knife") do |p|
-          user_specific_files.concat Dir.glob(File.join(Chef::Util::PathHelper.escape_glob_dir(p), "*.rb"))
+        ChefConfig::PathHelper.home(".chef", "plugins", "knife") do |p|
+          user_specific_files.concat Dir.glob(File.join(ChefConfig::PathHelper.escape_glob_dir(p), "*.rb"))
         end
 
         user_specific_files

@@ -26,12 +26,13 @@ class Chef
       attr_reader :chef_repo, :new_client_key, :validation_client_name, :validation_key
 
       deps do
-        require "chef-util/path_helper" unless defined?(ChefUtil::PathHelper)
+        require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
         require_relative "client_create"
         require_relative "user_create"
-        #TODO - necessary? The only ohai reference in all of knife, and gets used
+        # TDMP - necessary? The only ohai reference in all of knife, and gets used
         # to try to guess server name for the current host.  lighter options?
-        require "ohai" unless defined?(Ohai::System)
+        #  Then again,w e depend ont he chef gem anyway, which will pull in ohai regardless...
+        require "ohai" unless defined?(Ohai)
         Chef::Knife::ClientCreate.load_deps
         Chef::Knife::UserCreate.load_deps
       end
@@ -140,7 +141,7 @@ class Chef
 
       # @return [String] the path to the user's .chef directory
       def chef_config_path
-        @chef_config_path ||= Chef::Util::PathHelper.home(".chef")
+        @chef_config_path ||= ChefConfig::PathHelper.home(".chef")
       end
 
       # @return [String] the full path to the config file (credential file)
