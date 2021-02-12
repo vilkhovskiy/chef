@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "chef/application" unless defined?(Chef::Application)
+require "chef/application" unless defined?(Chef::Application)
 require_relative "../knife"
 require "mixlib/log"
 require "ohai/config"

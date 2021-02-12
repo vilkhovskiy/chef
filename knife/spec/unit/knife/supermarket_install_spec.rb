@@ -39,6 +39,9 @@ describe Chef::Knife::SupermarketInstall do
   end
 
   before(:each) do
+    # MPTD - why is this now needed?
+    described_class.deps
+
     require "chef/knife/core/cookbook_scm_repo"
 
     allow(knife.ui).to receive(:stdout).and_return(stdout)
