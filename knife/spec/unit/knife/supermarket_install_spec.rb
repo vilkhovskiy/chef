@@ -19,6 +19,9 @@
 require "spec_helper"
 require "chef/knife/supermarket_install"
 
+# MPTD - why is this now needed?
+require "mixlib/archive"
+
 describe Chef::Knife::SupermarketInstall do
   let(:knife) { Chef::Knife::SupermarketInstall.new }
   let(:stdout) { StringIO.new }
@@ -39,9 +42,6 @@ describe Chef::Knife::SupermarketInstall do
   end
 
   before(:each) do
-    # MPTD - why is this now needed?
-    described_class.deps
-
     require "chef/knife/core/cookbook_scm_repo"
 
     allow(knife.ui).to receive(:stdout).and_return(stdout)

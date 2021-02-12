@@ -124,7 +124,7 @@ class Chef
 
         category_string = Chef::JSONCompat.to_json({ "category" => cookbook_category })
 
-        http_resp = Chef::CookbookSiteStreamingUploader.post(uri, user_id, user_secret_filename, {
+        http_resp = Chef::Knife::Core::CookbookSiteStreamingUploader.post(uri, user_id, user_secret_filename, {
           tarball: File.open(cookbook_filename),
           cookbook: category_string,
         })
