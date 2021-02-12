@@ -1,18 +1,20 @@
 $:.unshift(File.dirname(__FILE__) + "/lib")
-vs_path = File.expand_path("chef-utils/lib/chef-utils/version_string.rb", __dir__)
-
-if File.exist?(vs_path)
-  # this is the moral equivalent of a require_relative since bundler makes require_relative here fail hard
-  eval(IO.read(vs_path))
-else
-  # if the path doesn't exist then we're just in the wild gem and not in the git repo
-  require "chef-utils/version_string"
-end
-require "chef/version"
-
+require_relative "lib/chef/knife/version"
+# vs_path = File.expand_path("chef-utils/lib/chef-utils/version_string.rb", __dir__)
+#
+# if File.exist?(vs_path)
+#   # this is the moral equivalent of a require_relative since bundler makes require_relative here fail hard
+#   eval(IO.read(vs_path))
+# else
+#   # if the path doesn't exist then we're just in the wild gem and not in the git repo
+#   require "chef-utils/version_string"
+# end
+#
 Gem::Specification.new do |s|
   s.name = "knife"
-  s.version = Chef::VERSION
+  # TDMP: - making this its own thing for now, it gets a little harder
+  #         to share the version because chef is a dependency.
+  s.version = Chef::Knife::VERSION
   s.platform = Gem::Platform::RUBY
   s.extra_rdoc_files = ["README.md", "LICENSE" ]
   s.summary = "Let's find a good description."
@@ -24,9 +26,10 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 2.6.0"
 
-  s.add_dependency "chef-config", "= #{Chef::VERSION}"
-  s.add_dependency "chef-utils", "= #{Chef::VERSION}"
-  s.add_dependency "chef", "= #{Chef::VERSION}"
+
+  s.add_dependency "chef-config", "= #{Chef::Knife::VERSION}"
+  s.add_dependency "chef-utils", "= #{Chef::Knife::VERSION}"
+  s.add_dependency "chef", "= #{Chef::Knife::VERSION}"
   s.add_dependency "train-core", "~> 3.2", ">= 3.2.28" # 3.2.28 fixes sudo prompts. See https://github.com/chef/chef/pull/9635
   s.add_dependency "train-winrm", ">= 0.2.5"
 
