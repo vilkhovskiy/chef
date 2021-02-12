@@ -1,7 +1,7 @@
-gemfile
+gemspec
 # source 'https://rubygems.org' # MPTD delete
 
-gem "cheffish", ">= 14" # testing only
+gem "cheffish", ">= 14" # testing only , but why didn't this need to explicit in chef?
 gem "webmock" # testing only
 
 gem "chef", path: ".."

@@ -38,6 +38,8 @@ require "http" unless defined?(Chef::HTTP)
 # MPTD: using pp at all?  a quick perusal of knife doesn't turn any up, so far.
 require "pp" unless defined?(PP)
 
+require_relative "application/knife"
+
 class Chef
   class Knife
 

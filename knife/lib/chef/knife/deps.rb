@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-require "chef/chef_fs/knife" unless defined?(Chef::ChefFS::Knife)
+require_relative "../chef_fs/knife" unless defined?(Chef::ChefFS::Knife)
 
 class Chef
   class Knife
