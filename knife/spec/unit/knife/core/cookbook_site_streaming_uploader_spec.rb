@@ -33,7 +33,7 @@ class FakeTempfile
 
 end
 
-describe Chef::CookbookSiteStreamingUploader do
+describe Chef::Knife::Core::CookbookSiteStreamingUploader do
 
   describe "create_build_dir" do
 

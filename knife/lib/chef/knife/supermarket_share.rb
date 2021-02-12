@@ -72,7 +72,7 @@ class Chef
         if cl.cookbook_exists?(cookbook_name)
           cookbook = cl[cookbook_name]
           Chef::CookbookUploader.new(cookbook).validate_cookbooks
-          tmp_cookbook_dir = Chef::CookbookSiteStreamingUploader.create_build_dir(cookbook)
+          tmp_cookbook_dir = Chef::Knife::Core::CookbookSiteStreamingUploader.create_build_dir(cookbook)
           begin
             Chef::Log.trace("Temp cookbook directory is #{tmp_cookbook_dir.inspect}")
             ui.info("Making tarball #{cookbook_name}.tgz")
