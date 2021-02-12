@@ -27,7 +27,7 @@ class Chef
       deps do
         require "chef/cookbook_loader" unless defined?(Chef::CookbookLoader)
         require "chef/cookbook_uploader" unless defined?(Chef::CookbookUploader)
-        require "chef/cookbook_site_streaming_uploader" unless defined?(Chef::CookbookSiteStreamingUploader)
+        require_relative "core/cookbook_site_streaming_uploader"
         require "chef/mixin/shell_out" unless defined?(Chef::Mixin::ShellOut)
       end
 

@@ -1,4 +1,8 @@
 gemfile
+# source 'https://rubygems.org' # MPTD delete
+
+gem "cheffish", ">= 14" # testing only
+gem "webmock" # testing only
 
 gem "chef", path: ".."
 gem "ohai", git: "https://github.com/chef/ohai.git", branch: "master"

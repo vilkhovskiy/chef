@@ -18,7 +18,7 @@
 #
 
 require "forwardable" unless defined?(Forwardable)
-require_relative "version"
+require_relative "knife/version"
 require "mixlib/cli" unless defined?(Mixlib::CLI)
 require "chef-utils/dsl/default_paths" unless defined?(ChefUtils::DSL::DefaultPaths)
 require "chef-utils/dist" unless defined?(ChefUtils::Dist)

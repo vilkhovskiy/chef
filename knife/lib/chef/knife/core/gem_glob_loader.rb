@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-require_relative "../../version"
+require_relative "../version"
 require "chef-config/path_helper" unless defined?(ChefConfig::PathHelper)
 class Chef
   class Knife
