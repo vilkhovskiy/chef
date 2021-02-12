@@ -18,7 +18,7 @@
 
 require "spec_helper"
 
-require "chef/cookbook_site_streaming_uploader"
+require "chef/knife/core/cookbook_site_streaming_uploader"
 
 class FakeTempfile
   def initialize(basename)
